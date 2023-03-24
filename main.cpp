@@ -6,11 +6,14 @@ using namespace std;
 int main()
 {
     Bingo bingo;
-    std::cout << "Wydrukuj sciezki do dostepnych list z haslami\n";
+    std::cout << "\nWydrukuj sciezki do dostepnych list z haslami\n";
     bingo.get_sciezki().drukuj_liste();
+    std::cout << "\nWybierz z ktorej listy chialbys skorzystac\n";
+    int n;
+    std::cin>>n;
     std::string str;
-
-    bingo.get_sciezki().getDane(1, str);
+    bingo.get_sciezki().getDane(n, str);
+    std::cout << "\nWybierz z ktorej listy chialbys skorzystac\n";
     std::cout << "drukuj element 1\n";
     std:: cout<< str << '\n'<<'\n';
     bingo.losowanie_hasel();
