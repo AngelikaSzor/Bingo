@@ -21,7 +21,7 @@ Bingo::~Bingo()
 
 std::string** Bingo::utworz_tablice2D(int rozmiar)
 {
-    std::string ** tablica= new std::string *[rozmiar];
+    std::string **tablica = new std::string *[rozmiar];
     for(int i=0; i<rozmiar; i++)
     {
         tablica[i] = new std::string [rozmiar];
@@ -31,7 +31,7 @@ std::string** Bingo::utworz_tablice2D(int rozmiar)
 
 void Bingo::usun_tablice2D()
 {
-    for(int i = 0; i < this->rozmiar; i++)
+    for(int i = 0; i<this->rozmiar; i++)
     {
       delete [] this->hasla[i];
     }
@@ -43,9 +43,9 @@ void Bingo::wydrukuj_tablice2D()
     {
         for(int j=0; j<this->rozmiar; j++)
         {
-            std::cout << this->hasla [i][j] << ' ';
+            std::cout<<this->hasla[i][j]<< ' ';
         }
-        std::cout << '\n';
+        std::cout<<'\n';
     }
 }
 void Bingo::wczytaj_z_pliku(const std::string &sciezka, Lista &lista)
@@ -55,17 +55,17 @@ void Bingo::wczytaj_z_pliku(const std::string &sciezka, Lista &lista)
   plik.open(sciezka.c_str());
   if(!plik.is_open())
   {
-      std::cout<<"Nie znaleziono pliku\n";
+    std::cout<<"Nie znaleziono pliku\n";
   }
   else
   {
-      //std::cout<<"przed petla\n";
-     while(plik.good())
-     {
-  std::getline(plik,line);
-//   std::cout<<line<<'\n';
-    lista.dodaj_na_koncu(line);
-     }
+    //std::cout<<"przed petla\n";
+    while(plik.good())
+    {
+        std::getline(plik,line);
+    //  std::cout<<line<<'\n';
+        lista.dodaj_na_koncu(line);
+    }
   }
 }
 Lista Bingo::get_sciezki()
@@ -97,6 +97,7 @@ Lista Bingo::get_hasla()
 }
 void Bingo::skresl_w_tablicy()
 {
+    std::cout<<"\nPodaj odpowiednie wartosci aby skreslic wybrany element z tabeli\n";
     std::string podmiana = "X";
     int kolumna;
     int wiersz;
@@ -158,10 +159,9 @@ int* Bingo::get_suma_kolumny()
 
 bool Bingo::czy_koniec_gry()
 {
-//jezeli wartosc w ktoryms elemencie tablicy 1D jest rowna 4 to koniec gry jezeli nie to zapetlenie do ponownego skreslenia
     for(int i=0; i<this->rozmiar; i++)
     {
-        if(this->suma_wiersze[i]==this->rozmiar|| this->suma_kolumny[i]==this->rozmiar)
+        if(this->suma_wiersze[i] == this->rozmiar|| this->suma_kolumny[i] == this->rozmiar)
         {
             std::cout<<"\n!!!!!!!!!!!!BINGO!!!!!!!!!!!!\n";
             return 1;
@@ -178,8 +178,8 @@ int Bingo::sprawdzenie_int ()
     {
         std::cin.clear();
         std::cin.ignore();
-        std::cout << "Niepoprawny numer. Prosze wpisac ponownie: \n";
-        std::cin >> n;
+        std::cout<<"Niepoprawny numer. Prosze wpisac ponownie: \n";
+        std::cin>>n;
     }
     std::cin.sync();
     return n;
@@ -187,21 +187,21 @@ int Bingo::sprawdzenie_int ()
 
 int Bingo::set_rozmiar()
 {
-    int n= this->sprawdzenie_int();
+    int n = this->sprawdzenie_int();
     while(n<2)
     {
         std::cout<<"Bingo nie moze byc mniejsze niz 2x2\n";
-        n= this->sprawdzenie_int();
+        n = this->sprawdzenie_int();
     }
     return n;
 }
 int Bingo::set_wk()
 {
-    int n= this->sprawdzenie_int();
+    int n = this->sprawdzenie_int();
     while(n<1 || n>this->rozmiar)
     {
         std::cout<<"Podaj poprawny numer \n";
-        n= this->sprawdzenie_int();
+        n = this->sprawdzenie_int();
     }
     return n;
 }
