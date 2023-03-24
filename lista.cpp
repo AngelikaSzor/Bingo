@@ -2,8 +2,8 @@
 
 Lista::Lista()
 {
-    this->head=nullptr;
-    this->tail=nullptr;
+    this->head = nullptr;
+    this->tail = nullptr;
     this->rozmiar = 0;
 }
 Lista::~Lista()
@@ -22,7 +22,7 @@ void Lista::dodaj_na_koncu(std::string &napis)
     Element_listy* temp = new Element_listy;
     temp->dane = napis;
     temp->next = nullptr;
-    if(this->head==nullptr)
+    if(this->head == nullptr)
     {
         this->head = temp;
        // std::cout<<"head: "<<this->head<<'\n';
@@ -40,10 +40,12 @@ void Lista::dodaj_na_koncu(std::string &napis)
 void Lista::drukuj_liste()
 {
     Element_listy* it = this->head;
+    int iteracja=1;
     while(it)
     {
-        std::cout<<it->dane<<'\n';
-        it=it->next;
+        std::cout<<iteracja<<". "<<it->dane<<'\n';
+        it = it->next;
+        iteracja++;
     }
 }
 
@@ -67,7 +69,7 @@ std::string Lista::wyjmij_z_listy(int indeks)
     std::string wyjety;
     Element_listy* temp;
     temp = this->head;
-    if(indeks==0)
+    if(indeks == 0)
     {
         wyjety = temp->dane;
         this->head = this->head ->next ;
@@ -87,6 +89,6 @@ std::string Lista::wyjmij_z_listy(int indeks)
         temp->next = temp2;
 
     }
-    this->rozmiar --;
+    this->rozmiar--;
     return wyjety;
 }
